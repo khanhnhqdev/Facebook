@@ -12,10 +12,10 @@ export default function RightBar({ user }) {
     const DEFAULT_ID = "0";
     const [friends, setFriends] = useState([]);
     const { user: currentUser, dispatch } = useContext(AuthContext);
-
-    const [followed, setFollowed] = useState(
+    let [followed, setFollowed] = useState(
         currentUser.followings.includes(user ? user._id : DEFAULT_ID)
     );
+    followed = currentUser.followings.includes(user ? user._id : DEFAULT_ID)
 
     useEffect(() => {
         setFollowed(currentUser.followings.includes(user ? user._id : DEFAULT_ID));
