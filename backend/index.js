@@ -6,6 +6,8 @@ const morgan = require("morgan");
 const userRouter = require("./api/user");
 const authRouter = require("./api/auth");
 const postRouter = require("./api/post");
+const conversationRoute = require("./api/conversations");
+const messageRoute = require("./api/messages");
 const fileRouter = require("./api/fileStorage");
 const path = require("path");
 
@@ -29,6 +31,8 @@ app.use("/api/auth", authRouter);
 app.use("/api/posts", postRouter);
 app.use("/api/file", fileRouter);
 app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messageRoute);
 
 // health-check api
 app.get("/", (req, res) => {
